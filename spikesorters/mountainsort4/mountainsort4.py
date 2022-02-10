@@ -37,6 +37,8 @@ class Mountainsort4Sorter(BaseSorter):
         'detect_threshold': 3,
         'detect_interval': 10,  # Minimum number of timepoints between events detected on the same channel
         'noise_overlap_threshold': 0.15,  # Use None for no automated curation'
+        'add_end_clip': 0,
+        'freq_width': 1000,
     }
 
     _params_description = {
@@ -112,7 +114,8 @@ class Mountainsort4Sorter(BaseSorter):
             detect_threshold=p['detect_threshold'],
             detect_interval=p['detect_interval'],
             num_workers=p['num_workers'],
-            verbose=self.verbose
+            verbose=self.verbose,
+            add_end_clip=p['add_end_clip']
         )
 
         # Curate
